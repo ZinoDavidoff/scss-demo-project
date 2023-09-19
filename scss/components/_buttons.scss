@@ -1,0 +1,22 @@
+.button {
+    background-color: #0000FF; // Blue
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    cursor: pointer;    
+
+    @media screen and (max-width: 640px) {
+        display: block;
+        margin-bottom: .25rem;
+      }
+  }
+
+  .button-secondary {
+    @extend .button;
+    background-color: #4CAF50; // Green
+  }
+

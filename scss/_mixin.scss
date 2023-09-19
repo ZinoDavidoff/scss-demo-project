@@ -1,0 +1,67 @@
+@mixin transform($rotate) {
+    -webkit-transform: rotate($rotate);
+    -ms-transform: rotate($rotate);
+    transform: rotate($rotate);
+  }
+
+  @mixin padding {
+    padding: 10px 20px;
+  }
+
+  @function rem($pixels) {
+    $base-font-size: 16; 
+    @return ($pixels / $base-font-size) + rem; 
+}
+
+// mixin with if statement
+
+@mixin heading($size) {
+    @if $size == large {
+      font-size: rem(16);
+    }
+    @else if $size == medium{
+      font-size: 3rem;
+    }
+    @else if $size == small {
+      font-size: 2rem;
+    }
+    @else {
+      font-size: 1rem;
+    }
+  }
+  
+  .h1 {
+    @include heading(large);
+  }
+  
+  .h6 {
+    @include heading(small);
+  }
+
+  // for loop
+
+  @for $i from 1 through 5 {
+    .list-#{$i} {
+       width: 2px * $i;
+    }
+ }
+
+ .list-1 {
+    width: 2px; 
+  }
+  
+  .list-2 {
+    width: 4px; 
+  }
+  
+  .list-3 {
+    width: 6px; 
+  }
+  
+  .list-4 {
+    width: 8px; 
+  }
+  
+  .list-5 {
+    width: 10px; 
+  }
