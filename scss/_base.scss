@@ -1,10 +1,11 @@
 @import './variables';
 
-body {
-    background-color: $color-primary;
-    @extend %placeholder;
+%placeholder {
+  height: 100%;
 }
 
-  %placeholder {
-    height: 100%;
+body {
+  background-color: $color-primary;
+  @extend %placeholder;
 }
+

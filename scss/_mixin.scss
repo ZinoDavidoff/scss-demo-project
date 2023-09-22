@@ -1,23 +1,8 @@
-@mixin transform($rotate) {
-    -webkit-transform: rotate($rotate);
-    -ms-transform: rotate($rotate);
-    transform: rotate($rotate);
-  }
-
-  @mixin padding {
-    padding: 10px 20px;
-  }
-
-  @function rem($pixels) {
-    $base-font-size: 16; 
-    @return ($pixels / $base-font-size) + rem; 
-}
-
 // mixin with if statement
 
 @mixin heading($size) {
     @if $size == large {
-      font-size: rem(16);
+      font-size: 4rem;
     }
     @else if $size == medium{
       font-size: 3rem;
@@ -30,38 +15,68 @@
     }
   }
   
-  .h1 {
+  h1 {
     @include heading(large);
   }
   
-  .h6 {
+  h6 {
     @include heading(small);
   }
 
-  // for loop
+// for loop
 
-  @for $i from 1 through 5 {
-    .list-#{$i} {
-       width: 2px * $i;
-    }
- }
+$margin-values: 1 2 3 4 5;
 
- .list-1 {
-    width: 2px; 
+@for $i from 1 through 5 {
+  .m-#{$i} {
+    margin: #{$i * 0.25}rem; 
   }
-  
-  .list-2 {
-    width: 4px; 
+
+  .my-#{$i} {
+    margin-top: #{$i * 0.25}rem;
+    margin-bottom: #{$i * 0.25}rem;
   }
-  
-  .list-3 {
-    width: 6px; 
+}
+
+//
+
+@function px-to-rem($pixels) {
+  @return ($pixels / 16) + rem; 
+}
+
+h1 {
+  font-size: px-to-rem(32);
+}
+
+@function width-columns($columns, $gap) {
+  @return calc((100% - (#{$gap} * (#{$columns} - 1))) / #{$columns});
+}
+
+div.my-div {
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 2rem auto;
+}
+
+
+div.my-div .column {
+  height: 100px;
+  float: left;
+  width: width-columns(3, 10px);
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
   }
-  
-  .list-4 {
-    width: 8px; 
+
+  &:not(:last-child) {
+    margin-right: 10px;
   }
-  
-  .list-5 {
-    width: 10px; 
+}
+
+@for $i from 1 through 3 {
+  .column-#{$i} {
+    $percentage: $i * 10%;
+    background-color: darken($color-primary, $percentage);
   }
+}

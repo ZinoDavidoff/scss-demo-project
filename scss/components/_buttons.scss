@@ -1,5 +1,5 @@
 .button {
-    background-color: #0000FF; // Blue
+    background-color: #0000FF;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -7,7 +7,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 1.5rem;
-    cursor: pointer;    
+    cursor: pointer;
 
     @media screen and (max-width: 640px) {
         display: block;
@@ -17,6 +17,5 @@
 
   .button-secondary {
     @extend .button;
-    background-color: #4CAF50; // Green
+    background-color: #4CAF50;
   }
-
